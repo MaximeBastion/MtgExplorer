@@ -1,0 +1,40 @@
+﻿<Page
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    x:Class="MtgExplorator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MtgExplorator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
+			<ColumnDefinition Width="6*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			
+		</Grid.RowDefinitions>
+		
+		<StackPanel x:Name="controlsPanel" Grid.Column="0">
+			<AutoSuggestBox x:Name="search" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted" TextChanged="Search_TextChanged"></AutoSuggestBox>
+			<TextBlock x:Name="loadingCardsStateText" Text="0/0"></TextBlock>
+		</StackPanel>
+		<StackPanel x:Name="contentPanel" Grid.Column="1">
+			<TextBlock x:Name="contentTitle" Text="Home" FontSize="30"></TextBlock>
+			<ListView ItemsSource="{Binding CardsDisplayed}" Height="30000">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<Button>
+								<Image Source="{Binding BitmapImage}" Width="298px" Height="416px"></Image>
+							</Button>
+						</StackPanel>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackPanel>
+	</Grid>
+</Page>
